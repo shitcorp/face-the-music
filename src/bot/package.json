@@ -1,0 +1,28 @@
+{
+    "name": "@face-the-music/bot",
+    "version": "0.0.1",
+    "description": "The discord bot for face-the-music",
+    "private": true,
+    "license": "MIT",
+    "author": "Huskydog9988",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Huskydog9988/face-the-music",
+        "directory": "src/bot"
+    },
+    "scripts": {
+        "build": "yarn run compile",
+        "test": "yarn run compile && yarn run mocha",
+        "mocha": "ts-mocha \"test/**/*.ts\" --recursive --exit",
+        "compile": "shx rm -rf lib/ && tsc"
+    },
+    "dependencies": {
+        "@face-the-music/logging": "0.0.1"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.2.15",
+        "@types/mocha": "^8.2.1",
+        "chai": "^4.3.4",
+        "mocha": "^8.3.2"
+    }
+}
