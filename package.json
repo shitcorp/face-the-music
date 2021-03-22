@@ -29,6 +29,8 @@
     "types": "yarn workspace @face-the-music/types"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/chai": "^4.2.15",
     "@types/mocha": "^8.2.1",
     "@typescript-eslint/eslint-plugin": "^4.17.0",

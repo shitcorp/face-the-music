@@ -9,7 +9,7 @@
 Run:
 
 ```bash
-yarn && lerna link
+yarn && lerna link && yarn husky install
 ```
 
 (Note you must have yarn and lerna installed via npm)
