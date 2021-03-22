@@ -21,16 +21,21 @@
     "test:update:changed": "lerna run --since origin/master --include-dependents test --stream -- -u",
     "typecheck": "lerna exec --stream -- tsc --noEmit",
     "typecheck:changed": "lerna exec --stream --since origin/master --include-dependents -- tsc --noEmit",
+    "commit": "cz",
+    "release": "standard-version",
     "dashboard": "yarn workspace @face-the-music/dashboard",
     "bot": "yarn workspace @face-the-music/bot",
     "logging": "yarn workspace @face-the-music/logging",
     "types": "yarn workspace @face-the-music/types"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/chai": "^4.2.15",
     "@types/mocha": "^8.2.1",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "chai": "^4.3.4",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.22.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
@@ -41,6 +46,7 @@
     "lint-staged": "^10.5.4",
     "mocha": "^8.3.2",
     "prettier": "^2.2.1",
+    "standard-version": "^9.1.1",
     "ts-node": "^9.1.1"
   },
   "workspaces": [
