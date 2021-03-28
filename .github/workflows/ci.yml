@@ -1,0 +1,93 @@
+name: CI
+
+on: [push, pull_request]
+
+env:
+  NODE_VERSION: '14.x'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{NODE_VERSION}}
+
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Lock yarn file
+        run: yarn --frozen-lockfile --non-interactive
+
+      # - name: Install Packages
+      #   run: yarn install
+
+      - name: Lint
+        run: yarn lint
+
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{NODE_VERSION}}
+
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Lock yarn file
+        run: yarn --frozen-lockfile --non-interactive
+
+      # - name: Install Packages
+      #   run: yarn install
+
+      - name: Build
+        run: yarn build
+
+  test:
+    needs: [lint, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{NODE_VERSION}}
+
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Lock yarn file
+        run: yarn --frozen-lockfile --non-interactive
+
+      # - name: Install Packages
+      #   run: yarn install
+
+      - name: Test
+        run: yarn test
