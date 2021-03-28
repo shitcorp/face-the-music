@@ -23,8 +23,8 @@
     "typecheck:changed": "lerna exec --stream --since origin/master --include-dependents -- tsc --noEmit",
     "commit": "cz",
     "release": "standard-version",
-    "dashboard": "yarn workspace @face-the-music/dashboard",
-    "bot": "yarn workspace @face-the-music/bot",
+    "canto": "yarn workspace @face-the-music/canto",
+    "carmen": "yarn workspace @face-the-music/carmen",
     "logging": "yarn workspace @face-the-music/logging",
     "types": "yarn workspace @face-the-music/types"
   },
