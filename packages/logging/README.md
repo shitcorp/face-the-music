@@ -4,13 +4,16 @@
 
 ## Info:
 
+- exposes all logging functions from winston like: `info`, `debug`, `warning`, `error`, etc
 - auto creates log files
 - allows for preconfiured output of logs to sentry and elastic
 
 ## Example:
 
 ```js
-import logger from '@face-the-music/logging';
+import Logger from '@face-the-music/logging';
+
+const logger = new Logger();
 
 logger.info('hello');
 
