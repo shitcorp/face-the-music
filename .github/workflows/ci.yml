@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           # node-version: ${{NODE_VERSION}}
-          node-version: '14.x'
+          node-version: '15.x'
 
       - name: Cache multiple paths
         uses: actions/cache@v2
@@ -46,7 +46,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           # node-version: ${{NODE_VERSION}}
-          node-version: '14.x'
+          node-version: '15.x'
 
       - name: Cache multiple paths
         uses: actions/cache@v2
@@ -76,7 +76,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           # node-version: ${{NODE_VERSION}}
-          node-version: '14.x'
+          node-version: '15.x'
 
       - name: Cache multiple paths
         uses: actions/cache@v2
