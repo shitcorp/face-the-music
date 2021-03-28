@@ -12,7 +12,7 @@ Run:
 yarn
 ```
 
-(Note you must have yarn and lerna installed via npm)
+(Note you must have yarn installed via npm)
 
 ## Infrastructure
 
