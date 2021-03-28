@@ -1,36 +1,36 @@
 {
-    "name": "@face-the-music/bot",
-    "version": "0.0.1",
-    "description": "The discord bot for face-the-music",
-    "private": true,
-    "license": "MIT",
-    "author": "Huskydog9988",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Huskydog9988/face-the-music",
-        "directory": "src/bot"
-    },
-    "scripts": {
-        "build": "yarn run compile",
-        "test": "yarn run compile && yarn run mocha",
-        "mocha": "ts-mocha \"test/**/*.ts\" --recursive --exit",
-        "compile": "shx rm -rf lib/ && tsc"
-    },
-    "dependencies": {
-        "@discordjs/collection": "^0.1.6",
-        "@face-the-music/logging": "0.0.1",
-        "@sentry/node": "^6.2.3",
-        "@sentry/tracing": "^6.2.3",
-        "eris": "^0.14.0",
-        "eris-fleet": "^0.3.5",
-        "ioredis": "^4.24.5"
-    },
-    "devDependencies": {
-        "@sentry/types": "^6.2.3",
-        "@types/chai": "^4.2.15",
-        "@types/ioredis": "^4.22.1",
-        "@types/mocha": "^8.2.1",
-        "chai": "^4.3.4",
-        "mocha": "^8.3.2"
-    }
+  "name": "@face-the-music/carmen",
+  "version": "0.0.1",
+  "description": "The discord bot for face-the-music",
+  "private": true,
+  "license": "MIT",
+  "author": "Huskydog9988",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Huskydog9988/face-the-music",
+    "directory": "src/bot"
+  },
+  "scripts": {
+    "build": "yarn run compile",
+    "test": "yarn run compile && yarn run mocha",
+    "mocha": "ts-mocha \"test/**/*.ts\" --recursive --exit",
+    "compile": "shx rm -rf lib/ && tsc"
+  },
+  "dependencies": {
+    "@discordjs/collection": "^0.1.6",
+    "@face-the-music/logging": "0.0.1",
+    "@sentry/node": "^6.2.3",
+    "@sentry/tracing": "^6.2.3",
+    "eris": "^0.14.0",
+    "eris-fleet": "^0.3.5",
+    "ioredis": "^4.24.5"
+  },
+  "devDependencies": {
+    "@sentry/types": "^6.2.3",
+    "@types/chai": "^4.2.15",
+    "@types/ioredis": "^4.22.1",
+    "@types/mocha": "^8.2.1",
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2"
+  }
 }
