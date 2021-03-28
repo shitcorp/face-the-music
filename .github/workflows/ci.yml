@@ -2,8 +2,8 @@ name: CI
 
 on: [push, pull_request]
 
-env:
-  NODE_VERSION: '14.x'
+# env:
+#   NODE_VERSION: '14.x'
 
 jobs:
   lint:
@@ -15,7 +15,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{NODE_VERSION}}
+          # node-version: ${{NODE_VERSION}}
+          node-version: '14.x'
 
       - name: Cache multiple paths
         uses: actions/cache@v2
@@ -44,7 +45,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{NODE_VERSION}}
+          # node-version: ${{NODE_VERSION}}
+          node-version: '14.x'
 
       - name: Cache multiple paths
         uses: actions/cache@v2
@@ -73,7 +75,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{NODE_VERSION}}
+          # node-version: ${{NODE_VERSION}}
+          node-version: '14.x'
 
       - name: Cache multiple paths
         uses: actions/cache@v2
