@@ -10,7 +10,7 @@
     "url": "https://github.com/Huskydog9988/face-the-music"
   },
   "scripts": {
-    "ready-dev": "lerna link",
+    "prepare": "lerna link && yarn husky install",
     "build": "lerna run build --stream",
     "build:changed": "lerna run --since origin/master --include-dependents build --stream",
     "lint": "lerna exec --stream -- eslint . --ext .ts",
