@@ -1,4 +1,9 @@
 version: 2
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
 updates:
   # Fetch and update latest `npm` packages
   - package-ecosystem: npm
