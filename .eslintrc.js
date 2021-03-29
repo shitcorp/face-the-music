@@ -15,7 +15,7 @@ module.exports = {
   ],
   env: {
     node: true,
-    browser: true,
+    browser: false,
   },
   ignorePatterns: [
     'build',
