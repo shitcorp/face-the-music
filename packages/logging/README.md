@@ -10,22 +10,32 @@
 ## Example:
 
 ```js
-import logger from '@face-the-music/logging';
+// example imports
+import {
+  logger,
+  useConsole,
+  useSentry,
+  useElastic,
+  handleException,
+} from '@face-the-music/logging';
+// OR
+import * as Logging from '@face-the-music/logging';
+// then do Logging.logger
 
 logger.info('hello');
 
 // tell logger to start logging to console
-logger.useConsole();
+useConsole();
 // tell logger to start using sentry
-logger.useSentry(/* pass all sentry options here*/);
+useSentry(/* pass all sentry options here*/);
 // tell logger to start using elastic
-logger.useElastic(/* pass all elastic options here*/);
+useElastic(/* pass all elastic options here*/);
 
 try {
   // stuff
 } catch (error) {
   // sends error to all appropriate locations
-  logger.handleException(error);
-  // can also use #handleWarning(warning) variant for all warnings
+  handleException(error);
+  // can also use handleWarning(warning) variant for all warnings
 }
 ```
