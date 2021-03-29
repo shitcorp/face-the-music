@@ -18,19 +18,24 @@ jobs:
           # node-version: ${{NODE_VERSION}}
           node-version: '15.x'
 
-      - name: Cache multiple paths
+      - name: Fetch cache
+        id: getCache
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Lock yarn file
+        if: steps.getCache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile --non-interactive
+
+      - name: Cache node_modules
+        if: steps.getCache.outputs.cache-hit != 'true'
         uses: actions/cache@v2
         with:
           path: |
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
-
-      - name: Lock yarn file
-        run: yarn --frozen-lockfile --non-interactive
-
-      # - name: Install Packages
-      #   run: yarn install
 
       - name: Lint
         run: yarn lint
@@ -47,19 +52,24 @@ jobs:
           # node-version: ${{NODE_VERSION}}
           node-version: '15.x'
 
-      - name: Cache multiple paths
+      - name: Fetch cache
+        id: getCache
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Lock yarn file
+        if: steps.getCache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile --non-interactive
+
+      - name: Cache node_modules
+        if: steps.getCache.outputs.cache-hit != 'true'
         uses: actions/cache@v2
         with:
           path: |
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
-
-      - name: Lock yarn file
-        run: yarn --frozen-lockfile --non-interactive
-
-      # - name: Install Packages
-      #   run: yarn install
 
       - name: Build
         run: yarn build
@@ -76,19 +86,24 @@ jobs:
           # node-version: ${{NODE_VERSION}}
           node-version: '15.x'
 
-      - name: Cache multiple paths
+      - name: Fetch cache
+        id: getCache
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Lock yarn file
+        if: steps.getCache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile --non-interactive
+
+      - name: Cache node_modules
+        if: steps.getCache.outputs.cache-hit != 'true'
         uses: actions/cache@v2
         with:
           path: |
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
-
-      - name: Lock yarn file
-        run: yarn --frozen-lockfile --non-interactive
-
-      # - name: Install Packages
-      #   run: yarn install
 
       - name: Test
         run: yarn test
