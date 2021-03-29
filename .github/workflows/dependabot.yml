@@ -1,9 +1,17 @@
-# Set update schedule for GitHub Actions
-
 version: 2
 updates:
-  - package-ecosystem: 'github-actions'
+  # Fetch and update latest `npm` packages
+  - package-ecosystem: npm
     directory: '/'
     schedule:
-      # Check for updates to GitHub Actions every weekday
-      interval: 'daily'
+      interval: daily
+      time: '00:00'
+    open-pull-requests-limit: 10
+    # reviewers:
+    #   - shitcorp
+    # assignees:
+    #   - shitcorp
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope

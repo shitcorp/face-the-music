@@ -115,6 +115,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# temp ignore api
+# temp ignores
 src/api/
 src/dashboard/
+packages/
