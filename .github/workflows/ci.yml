@@ -27,7 +27,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
 
-      - name: Lock yarn file
+      - name: Install deps
         if: steps.getCache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile --non-interactive
 
@@ -46,7 +46,7 @@ jobs:
           # node-version: ${{NODE_VERSION}}
           node-version: '15.x'
 
-       - name: Cache modules
+      - name: Cache modules
         id: cache
         uses: actions/cache@v2
         with:
@@ -55,7 +55,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
 
-      - name: Lock yarn file
+      - name: Install deps
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile --non-interactive
 
@@ -74,7 +74,7 @@ jobs:
           # node-version: ${{NODE_VERSION}}
           node-version: '15.x'
 
-       - name: Cache modules
+      - name: Cache modules
         id: cache
         uses: actions/cache@v2
         with:
@@ -83,7 +83,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
 
-      - name: Lock yarn file
+      - name: install deps
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile --non-interactive
 
