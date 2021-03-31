@@ -1,6 +1,6 @@
-# face-the-music-api
+# canto
 
-> Api for face the music
+> API service for face the music
 
 ## About
 
@@ -14,7 +14,7 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
 
     ```
-    cd path/to/face-the-music-api
+    cd path/to/canto
     npm install
     ```
 

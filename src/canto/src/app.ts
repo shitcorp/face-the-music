@@ -4,7 +4,7 @@ import compress from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
 
-import feathers, { HookContext as FeathersHookContext } from '@feathersjs/feathers';
+import feathers from '@feathersjs/feathers';
 import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
@@ -16,9 +16,9 @@ import middleware from './middleware';
 import services from './services';
 import appHooks from './app.hooks';
 import channels from './channels';
-
+import { HookContext as FeathersHookContext } from '@feathersjs/feathers';
 import authentication from './authentication';
-import sequelize from './sequelize';
+import mongoose from './mongoose';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const app: Application = express(feathers());
@@ -42,7 +42,7 @@ app.use('/', express.static(app.get('public')));
 app.configure(express.rest());
 app.configure(socketio());
 
-app.configure(sequelize);
+app.configure(mongoose);
 
 // Configure other middleware (see `middleware/index.ts`)
 app.configure(middleware);
