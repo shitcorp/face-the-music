@@ -7,6 +7,7 @@ import {
   ElasticsearchTransportOptions,
 } from 'winston-elasticsearch';
 import { inspect } from 'util';
+import { LoggerModule } from 'i18next';
 
 // daily roate file
 const dailyRotateFile = new DailyRotateFile({
@@ -121,4 +122,18 @@ export const handleWarning = (warning: any) => {
   Sentry.captureException(warning);
   // inspect and log exception
   logger.warning(inspect(warning, false, null, true));
+};
+
+export const i18nextLogger: LoggerModule = {
+  type: 'logger',
+
+  log: function (args) {
+    logger.info(args);
+  },
+  warn: function (args) {
+    logger.warning(args);
+  },
+  error: function (args) {
+    logger.error(args);
+  },
 };

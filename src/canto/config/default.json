@@ -9,7 +9,7 @@
   "authentication": {
     "entity": "user",
     "service": "users",
-    "secret": "o5FHRP3KPO5r5mfMAeuDPdPMqlE=",
+    "secret": "yHBhqVhVayt0I4kGvRkZ1FJdjMg=",
     "authStrategies": [
       "jwt",
       "local"
@@ -35,5 +35,5 @@
       }
     }
   },
-  "postgres": "postgres://postgres:@localhost:5432/face_the_music_api"
+  "mongodb": "mongodb://localhost:27017/canto"
 }

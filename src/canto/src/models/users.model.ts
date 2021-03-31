@@ -1,29 +1,26 @@
-// See http://docs.sequelizejs.com/en/latest/docs/models-definition/
+// users-model.ts - A mongoose model
+//
+// See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
-import { Sequelize, DataTypes, Model } from 'sequelize';
-import { HookReturn } from 'sequelize/types/lib/hooks';
 import { Application } from '../declarations';
+import { Model, Mongoose } from 'mongoose';
 
-export default function (app: Application): typeof Model {
-  const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const users = sequelizeClient.define('users', {
+export default function (app: Application): Model<any> {
+  const modelName = 'users';
+  const mongooseClient: Mongoose = app.get('mongooseClient');
+  const schema = new mongooseClient.Schema({
   
   
-    githubId: { type: DataTypes.STRING },
+    githubId: { type: String },
   
   }, {
-    hooks: {
-      beforeCount(options: any): HookReturn {
-        options.raw = true;
-      }
-    }
+    timestamps: true
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (users as any).associate = function (models: any): void {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
-  };
-
-  return users;
+  // This is necessary to avoid model compilation errors in watch mode
+  // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel
+  if (mongooseClient.modelNames().includes(modelName)) {
+    (mongooseClient as any).deleteModel(modelName);
+  }
+  return mongooseClient.model<any>(modelName, schema);
 }

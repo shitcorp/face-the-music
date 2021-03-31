@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2018",
-    "module": "commonjs",
-    "outDir": "./lib",
     "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true
+    "outDir": "./dist",
+    "importHelpers": true,
+    // "strict": true,
+    // "esModuleInterop": true
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false
   },
-  "exclude": [
-    "test"
-  ]
+  "extends": "../../tsconfig.json",
+  "exclude": ["test", "dist", "node_modules"]
 }

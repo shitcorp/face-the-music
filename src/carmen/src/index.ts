@@ -1,9 +1,17 @@
-import { logger, useSentry } from '@face-the-music/logging';
+import {
+  logger,
+  useSentry,
+  i18nextLogger,
+  useConsole,
+} from '@face-the-music/logging';
 import { isMaster } from 'cluster';
 import { Fleet } from 'eris-fleet';
-import { join } from 'path';
+import { join, resolve } from 'path';
 import * as Sentry from '@sentry/node';
 import { platform, version, release } from 'os';
+import i18next from 'i18next';
+import HttpApi from 'i18next-http-backend';
+import { config } from 'dotenv';
 
 // check if node version is below 14
 if (Number(process.version.slice(1).split('.')[0]) < 14) {
@@ -13,13 +21,24 @@ if (Number(process.version.slice(1).split('.')[0]) < 14) {
   process.exit(1);
 }
 
+if (process.env.NODE_ENV !== 'production') {
+  useConsole();
+
+  const path = resolve(process.cwd(), '../..', 'bot.env');
+  logger.debug(path);
+
+  config({
+    path,
+  });
+}
+
 useSentry({
   // dsn: DSN,
   dsn: undefined,
   release: `janus-bot@${process.env.npm_package_version}`,
   environment: process.env.NODE_ENV || 'dev',
   maxBreadcrumbs: 100,
-  serverName: process.env.serverName || 'dev',
+  serverName: process.env.SERVERNAME || 'dev',
 
   beforeSend(event) {
     // if user
@@ -64,6 +83,31 @@ Sentry.setTag('platform', platform());
 Sentry.setTag('os.name', version());
 Sentry.setTag('os', `${version()} ${release()}`);
 Sentry.setTag('node', process.version);
+
+// docs: https://github.com/i18next/i18next-http-backend
+i18next
+  .use(i18nextLogger)
+  .use(HttpApi)
+  .init({
+    lng: 'en',
+    fallbackLng: 'en',
+    preload: ['en'],
+    ns: ['error', 'command'],
+    defaultNS: 'command',
+    backend: {
+      // path where resources get loaded from, or a function
+      // returning a path:
+      // function(lngs, namespaces) { return customPath; }
+      // the returned path will interpolate lng, ns if provided like giving a static path
+      loadPath: `${process.env.API}/locales/{{lng}}/{{ns}}.json`,
+
+      // path to post missing resources
+      addPath: `${process.env.API}/locales/{{lng}}/{{ns}}.missing.json`,
+
+      reloadInterval: false,
+    },
+    debug: process.env.NODE_ENV === 'production',
+  });
 
 const Admiral = new Fleet({
   path: join(__dirname, './bot.js'),
