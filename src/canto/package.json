@@ -24,6 +24,7 @@
     "yarn": ">= 0.18.0"
   },
   "scripts": {
+    "build": "yarn run compile",
     "test": "yarn run compile && yarn run mocha",
     "lint": "eslint src/. test/. --config .eslintrc.json --ext .ts --fix",
     "dev": "ts-node-dev --no-notify src/",
