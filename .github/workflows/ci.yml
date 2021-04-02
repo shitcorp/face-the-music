@@ -75,6 +75,11 @@ jobs:
           # node-version: ${{NODE_VERSION}}
           node-version: '15.x'
 
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.3.0
+        with:
+          mongodb-version: '4.x'
+
       - name: Cache modules
         id: cache
         uses: actions/cache@v2
