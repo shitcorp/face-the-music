@@ -57,8 +57,8 @@ export default class JanusWorker extends BaseClusterWorker {
   /**
    * Launches the necessary services for the bot
    */
-  launch(): void {
-    // await this.loadcmds();
+  async launch(): Promise<void> {
+    await this.loadcmds();
 
     this.bot.on('messageCreate', (message) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises

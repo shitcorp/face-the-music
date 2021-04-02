@@ -12,6 +12,7 @@ import { platform, version, release } from 'os';
 import i18next from 'i18next';
 import HttpApi from 'i18next-http-backend';
 import { config } from 'dotenv';
+import Redis from 'ioredis';
 
 // check if node version is below 14
 if (Number(process.version.slice(1).split('.')[0]) < 14) {
@@ -84,6 +85,8 @@ Sentry.setTag('os.name', version());
 Sentry.setTag('os', `${version()} ${release()}`);
 Sentry.setTag('node', process.version);
 
+const redis = new Redis(process.env.REDIS);
+
 // docs: https://github.com/i18next/i18next-http-backend
 i18next
   .use(i18nextLogger)
@@ -92,8 +95,17 @@ i18next
     lng: 'en',
     fallbackLng: 'en',
     preload: ['en'],
-    ns: ['error', 'command'],
-    defaultNS: 'command',
+    ns: ['error', 'common', 'information'],
+    defaultNS: 'common',
+    saveMissing: true,
+    missingKeyHandler: (lng, ns, key, fallbackvalue) => {
+      logger.alert(`The key '${key}' is missing`, {
+        key,
+        language: lng,
+        namespace: ns,
+        fallbackvalue,
+      });
+    },
     backend: {
       // path where resources get loaded from, or a function
       // returning a path:
@@ -152,7 +164,27 @@ if (isMaster) {
 
   // Logs stats when they arrive
   Admiral.on('stats', (m) => {
-    logger.debug(m);
+    // logger.debug(m);
+    const pipeline = redis.pipeline();
+
+    // set values
+    pipeline
+      .set('guilds', m.guilds)
+      .set('users', m.users)
+      .set('clustersRam', m.clustersRam)
+      .set('servicesRam', m.servicesRam)
+      .set('masterRam', m.masterRam)
+      .set('totalRam', m.totalRam)
+      .set('voice', m.voice)
+      .set('largeGuilds', m.largeGuilds)
+      .set('shardCount', m.shardCount)
+      .set('clusters', m.clusters)
+      .set('services', m.services);
+
+    // execute pipeline
+    pipeline.exec().catch((err) => {
+      logger.error(err);
+    });
   });
 }
 

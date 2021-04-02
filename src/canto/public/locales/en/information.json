@@ -1,0 +1,41 @@
+{
+  "help": {
+    "prefix": {
+      "name": "Prefix:",
+      "value": "This server's prefix is `{{prefix}}`"
+    },
+    "commands": {
+      "name": "Commands:",
+      "value": "View all of the [commands here](https://example.com/)."
+    },
+    "invite": {
+      "name": "Invite:",
+      "value": "Currently Face The Music is an invite only bot. To request access please join the support server."
+    },
+    "support": {
+      "name": "Support & Feedback:",
+      "value": "[Join](https://discord.gg/gcDUevRVNe) the support and feedback server."
+    }
+  },
+  "info": {
+    "title": "Face The Music Stats",
+    "version": "Version:",
+    "cluster": "Cluster ID:",
+    "worker": "Worker ID:",
+    "shard": "Shard Count:",
+    "server": "Server Count:",
+    "user": "User Count:"
+  },
+  "ping": {
+    "ping": "Ping?",
+    "pong": "Pong! Round trip latency is {{roundTrip}}ms. API latency is {{api}}ms."
+  },
+  "support": {
+    "title": "Support & Feedback",
+    "description": "[Join](https://discord.gg/gcDUevRVNe) Face The Music's support and feedback server."
+  },
+  "vote": {
+    "title": "Vote",
+    "description": "Vote for Face The Music [here](https://example.com/)"
+  }
+}
