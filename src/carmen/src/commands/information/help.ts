@@ -8,7 +8,7 @@ export default class extends Command {
     super(commandObjects, {
       name: 'help',
       description: 'A generic help command.',
-      module: 'information',
+      module: 'info',
       aliases: [],
       disabled: false,
     });

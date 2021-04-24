@@ -10,7 +10,7 @@ export default class extends Command {
     super(commandObjects, {
       name: 'ping',
       description: 'Sends basic latency info.',
-      module: 'information',
+      module: 'info',
       aliases: [],
       disabled: false,
     });

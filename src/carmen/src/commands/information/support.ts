@@ -9,7 +9,7 @@ export default class extends Command {
       name: 'support',
       description:
         'Get the link to the support & feedback server for the bot.',
-      module: 'information',
+      module: 'info',
       aliases: ['feedback'],
       disabled: false,
     });

@@ -12,7 +12,7 @@ export default class extends Command {
     super(commandObjects, {
       name: 'info',
       description: 'Get basic bot information.',
-      module: 'information',
+      module: 'info',
       aliases: ['information', 'stats'],
       disabled: false,
     });

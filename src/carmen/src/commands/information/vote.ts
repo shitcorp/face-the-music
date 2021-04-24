@@ -8,7 +8,7 @@ export default class extends Command {
     super(commandObjects, {
       name: 'vote',
       description: 'Get the link to vote for the bot.',
-      module: 'information',
+      module: 'info',
       aliases: [],
       disabled: true,
     });
