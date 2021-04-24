@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "importHelpers": true
-  },
-  "extends": "../../tsconfig.json",
-  "exclude": ["test", "dist", "node_modules"]
-}
